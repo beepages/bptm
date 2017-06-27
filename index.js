@@ -8,15 +8,11 @@ let themelist = [];
 
 const PageItemCount = 10;
 
-/* REMOVE FOR PUBLISHING -- NOT LOADING THEMES LOCALLY ANYMORE */
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'localhost');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-}
-
-app.use(allowCrossDomain);
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -48,7 +44,7 @@ app.get('/listfiles', function(req, res)
 				let dc = [ //files to ignore
 					"preview-1.png",
 				];
-				if(~~dc.indexOf(path + item)) { continue; }
+				if(~~dc.indexOf(path + item)) { return; }
 				list.push(path + item);
 			}
 		});
@@ -111,4 +107,4 @@ function loadThemeList()
 loadThemeList();
 setInterval(loadThemeList, 5000); //updates theme list every five seconds
 
-app.listen(4000, "127.0.0.1");
+app.listen(/* 4000 */ 3000, function(){});
