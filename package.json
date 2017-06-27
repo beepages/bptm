@@ -1,0 +1,16 @@
+{
+  "name": "beepages-theme-manager",
+  "version": "0.1.0",
+  "description": "Theme manager for BeePages CMS",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Martin Darazs",
+  "license": "ISC"
+}

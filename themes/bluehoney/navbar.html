@@ -1,0 +1,43 @@
+<div id="nav-button-ex" style="display: none">
+	<button class="nav-button">PageName</button>
+</div>
+<div id="navbar">
+	<div id="navcontainer">
+
+	</div>
+</div>
+
+<script src="{{PATH_ORIGIN}}/public/pagelist.js"></script>
+<script>
+let nbd = document.getElementById("nav-button-ex").innerHTML;
+
+let navcontainer = document.getElementById("navcontainer");
+
+function applyButton(name, url)
+{
+	let pdiv = document.createElement("div");
+	pdiv.innerHTML = nbd;
+
+	for(let i = 0; i < pdiv.childNodes.length; i++)
+	{
+		if(pdiv.childNodes[i].className == "nav-button")
+		{
+			pdiv.childNodes[i].innerHTML = name;
+			pdiv.childNodes[i].setAttribute("onclick", "window.location.href = '{{PATH_ORIGIN}}/" + url + "';")
+		}
+	}
+
+	return pdiv.innerHTML;
+}
+
+for(let i = 0; i < PAGE_LIST.length; i++)
+{
+	if(PAGE_LIST[i][0] == "PAGE")
+	{
+		navcontainer.innerHTML += applyButton(PAGE_LIST[i][1], PAGE_LIST[i][2]);
+	}
+}
+
+//glossary
+navcontainer.innerHTML += applyButton("Posts", 'glossary');
+</script>

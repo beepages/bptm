@@ -1,0 +1,94 @@
+body
+{
+	background-color: #F4F4F4;
+}
+
+@font-face {
+	font-family: 'Arvin';
+	src: url('{{PATH_ORIGIN}}/public/fonts/Arvin_Regular.ttf') format('truetype');
+}
+
+#headerTitle
+{
+	width: 100%;
+	background-color: #0a5a82;
+	text-align: center;
+
+	height: 250px;
+	line-height: 250px;
+
+	font-size: 50px;
+	color: white;
+
+	margin: 0;
+
+	font-family: "Arvin";
+}
+
+#footerText
+{
+	width: 100%;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#container, #main-content
+{
+	padding: 50px;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: white;
+}
+
+#navbar
+{
+	width: 100%;
+	height: 40px;
+	background-color: #1278aa;
+}
+
+#navcontainer
+{
+	text-align:center;
+}
+
+.nav-button
+{
+	margin:auto;
+	width: 150px;
+	background: transparent;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	height: 40px;
+	color: white;
+}
+
+#glossary-title
+{
+	margin-bottom: 25px;
+}
+
+.glossary-entry
+{
+	border-left: 1px solid black;
+	padding-left: 10px;
+}
+
+.glossary-entry-title
+{
+	font-size: 30px;
+}
+
+.glossary-entry-preview
+{
+	font-size: 16px;
+	margin-left: 10px;
+}
+
+.glossary-entry-date
+{
+	margin-bottom: 25px;
+}
