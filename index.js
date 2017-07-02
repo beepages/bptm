@@ -44,7 +44,7 @@ app.get('/listfiles', function(req, res)
 				let dc = [ //files to ignore
 					"preview-1.png",
 				];
-				if(~~dc.indexOf(path + item)) { return; }
+				if(dc.indexOf(path + item) != -1) { return; }
 				list.push(path + item);
 			}
 		});
@@ -81,7 +81,7 @@ app.get('/themes', function(req, res)
 			{
 				if(fs.existsSync('./themes/' + pp[j]))
 				{
-					out.previews.push('/files/' + pp[j]);
+					out.previews.push(pp[j]);
 				}
 			}
 		} else
