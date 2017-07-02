@@ -1,7 +1,7 @@
-##beepages theme manager
+## beepages theme manager
 
-###/public/
+### /public/
 user theme management [coming soon]
 
-###/themes/
+### /themes/
 the archive
