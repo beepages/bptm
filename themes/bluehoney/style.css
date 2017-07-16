@@ -8,6 +8,11 @@ body
 	src: url('{{PATH_ORIGIN}}/public/fonts/Arvin_Regular.ttf') format('truetype');
 }
 
+img
+{
+	max-width: 100%;
+}
+
 #headerTitle
 {
 	width: 100%;

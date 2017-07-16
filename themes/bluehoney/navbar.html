@@ -6,38 +6,47 @@
 
 	</div>
 </div>
-
-<script src="{{PATH_ORIGIN}}/public/pagelist.js"></script>
 <script>
-let nbd = document.getElementById("nav-button-ex").innerHTML;
-
-let navcontainer = document.getElementById("navcontainer");
-
-function applyButton(name, url)
+[[./public/getfile.js]]
+</script>
+<script>
+var PAGE_LIST;
+getFileContents('pagelist', function(data) {
+	eval("PAGE_LIST = " + data + ".LIST");
+	init();
+});
+function init()
 {
-	let pdiv = document.createElement("div");
-	pdiv.innerHTML = nbd;
+	let nbd = document.getElementById("nav-button-ex").innerHTML;
 
-	for(let i = 0; i < pdiv.childNodes.length; i++)
+	let navcontainer = document.getElementById("navcontainer");
+
+	function applyButton(name, url)
 	{
-		if(pdiv.childNodes[i].className == "nav-button")
+		let pdiv = document.createElement("div");
+		pdiv.innerHTML = nbd;
+
+		for(let i = 0; i < pdiv.childNodes.length; i++)
 		{
-			pdiv.childNodes[i].innerHTML = name;
-			pdiv.childNodes[i].setAttribute("onclick", "window.location.href = '{{PATH_ORIGIN}}/" + url + "';")
+			if(pdiv.childNodes[i].className == "nav-button")
+			{
+				pdiv.childNodes[i].innerHTML = name;
+				pdiv.childNodes[i].setAttribute("onclick", "window.location.href = '{{PATH_ORIGIN}}/" + url + "';")
+			}
+		}
+
+		return pdiv.innerHTML;
+	}
+
+	for(let i = 0; i < PAGE_LIST.length; i++)
+	{
+		if(PAGE_LIST[i][0] == "PAGE")
+		{
+			navcontainer.innerHTML += applyButton(PAGE_LIST[i][1], PAGE_LIST[i][2]);
 		}
 	}
 
-	return pdiv.innerHTML;
+	//glossary
+	navcontainer.innerHTML += applyButton("Posts", 'glossary');
 }
-
-for(let i = 0; i < PAGE_LIST.length; i++)
-{
-	if(PAGE_LIST[i][0] == "PAGE")
-	{
-		navcontainer.innerHTML += applyButton(PAGE_LIST[i][1], PAGE_LIST[i][2]);
-	}
-}
-
-//glossary
-navcontainer.innerHTML += applyButton("Posts", 'glossary');
 </script>
